@@ -1,0 +1,17 @@
+%ul
+  - @users.each do |user|
+    %li
+      %h1
+        - if !user.pomodorass.empty? then
+          -if user.pomodorass.last.status == "busy" then
+            %img.pom{:src => "./assets/pomodoro_small_red.png"}
+          - elsif user.pomodorass.last.status == "rest"
+            %img.pom{:src => "./assets/pomodoro_small_blue.png"}
+          - elsif user.pomodorass.last.status == "free"
+            %img.pom{:src => "./assets/pomodoro_small_green.png"}
+        - else
+          %img.pom{:src => "./assets/pomodoro_small_green.png"}
+        - if user == current_user then
+          = link_to user.username, pomodoro_adding_path(current_user.id)
+        - else
+          = user.username

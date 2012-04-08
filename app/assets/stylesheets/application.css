@@ -5,3 +5,27 @@
  *= require_self
  *= require_tree . 
 */
+body {
+}
+#basket {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    z-index: -10;
+}
+
+#content {
+    margin: 50px 200px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 10px;
+    z-index: 10;
+}
+
+li {
+    list-style-type: none;
+}
+.pom {
+}

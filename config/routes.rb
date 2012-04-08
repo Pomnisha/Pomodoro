@@ -1,4 +1,8 @@
 Pomodoro::Application.routes.draw do
+  devise_for :users
+  root :to => "users#index", :as => "users"
+  match "/" => "devise/sessions#new"
+  match "/add_pomodoro/:id" => "users#add_pomodoro", :as => "pomodoro_adding"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
