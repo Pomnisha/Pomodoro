@@ -5,7 +5,15 @@
  *= require_self
  *= require_tree . 
 */
+
+@font-face {
+    font-family: Logobloqo;
+    src: url('fonts/Logobloqo2.ttf');
+}
+
 body {
+    font-family: Logobloqo;
+
 }
 #basket {
     position: absolute;
@@ -16,16 +24,29 @@ body {
 
 #content {
     margin: 50px 200px;
-    border-radius: 5px;
+    border-radius: 10px;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     padding: 10px;
     z-index: 10;
+
 }
 
 li {
     list-style-type: none;
+    position: relative;
 }
 .pom {
+}
+
+.time_to_end {
+    display: block;
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    color: #fff;
+    font-size: 0.5em;
+    text-align: center;
+    width: 65px;
 }

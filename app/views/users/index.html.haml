@@ -9,8 +9,10 @@
             %img.pom{:src => "./assets/pomodoro_small_blue.png"}
           - elsif user.pomodorass.last.status == "free"
             %img.pom{:src => "./assets/pomodoro_small_green.png"}
+          .time_to_end= user.pomodorass.last.left < 0 ? "free" : Time.at(user.pomodorass.last.left).strftime("%M:%S")
         - else
           %img.pom{:src => "./assets/pomodoro_small_green.png"}
+          .time_to_end= "free"
         - if user == current_user then
           = link_to user.username, pomodoro_adding_path(current_user.id)
         - else
