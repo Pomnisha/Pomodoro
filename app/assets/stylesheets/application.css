@@ -13,7 +13,12 @@
 
 body {
     font-family: Logobloqo;
-
+    background: url('background2.jpg') no-repeat;
+    background-size: cover ;
+    -moz-background-size: cover ;
+    -o-background-size: cover ;
+    -webkit-background-size: cover ;
+    opacity: 1;
 }
 #basket {
     position: absolute;
@@ -23,6 +28,8 @@ body {
 }
 
 #content {
+    background-color: #FFF;
+    opacity: 0.8;
     margin: 50px 200px;
     border-radius: 10px;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);

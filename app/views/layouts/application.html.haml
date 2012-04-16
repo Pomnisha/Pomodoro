@@ -6,7 +6,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
 %body
-  %img#basket{:src => "./assets/background.png"}
+  /%img#basket{:src => "./assets/background.png"}
+  #nav
+    = link_to "edit profile", edit_user_registration_path
   #content
     = yield
 
