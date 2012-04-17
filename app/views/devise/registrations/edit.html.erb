@@ -12,6 +12,13 @@
   <div><%= f.label :last_name %><br />
   <%= f.text_field :last_name %></div>
 
+  <div><%= f.label :pomodoro_length, "Pomorodo duration" %><br />
+  <%= f.number_field :pomodoro_length %></div>
+
+  <div><%= f.label :rest_length, "Rest duration" %><br />
+  <%= f.number_field :rest_length %></div>
+
+
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 

@@ -13,7 +13,7 @@
 
 body {
     font-family: Logobloqo;
-    background: url('background2.jpg') no-repeat;
+    background: url('./background2.jpg') no-repeat;
     background-size: cover ;
     -moz-background-size: cover ;
     -o-background-size: cover ;
@@ -44,6 +44,11 @@ li {
     list-style-type: none;
     position: relative;
 }
+li div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 .pom {
 }
 
@@ -53,7 +58,7 @@ li {
     top: 25px;
     left: 0px;
     color: #fff;
-    font-size: 0.5em;
+    font-size: 0.8em;
     text-align: center;
     width: 65px;
 }

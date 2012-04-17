@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120408150031) do
+ActiveRecord::Schema.define(:version => 20120417194040) do
 
   create_table "pomodoras", :force => true do |t|
     t.integer  "user_id"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20120408150031) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "pomodoro_length",        :default => 25
+    t.integer  "rest_length",            :default => 5
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

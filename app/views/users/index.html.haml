@@ -1,19 +1,30 @@
 %ul
   - @users.each do |user|
     %li
-      %h1
-        - if !user.pomodorass.empty? then
-          -if user.pomodorass.last.status == "busy" then
-            %img.pom{:src => "./assets/pomodoro_small_red.png"}
-          - elsif user.pomodorass.last.status == "rest"
-            %img.pom{:src => "./assets/pomodoro_small_blue.png"}
-          - elsif user.pomodorass.last.status == "free"
+      %h3
+        .right_div
+          - if !user.pomodorass.empty? then
+            -if user.pomodorass.last.status == "busy" then
+              %img.pom{:src => "./assets/pomodoro_small_red.png"}
+            - elsif user.pomodorass.last.status == "rest"
+              %img.pom{:src => "./assets/pomodoro_small_yellow.png"}
+            - elsif user.pomodorass.last.status == "free"
+              %img.pom{:src => "./assets/pomodoro_small_green.png"}
+            .time_to_end= user.pomodorass.last.left < 0 ? "free" : Time.at(user.pomodorass.last.left).strftime("%M:%S")
+          - else
             %img.pom{:src => "./assets/pomodoro_small_green.png"}
-          .time_to_end= user.pomodorass.last.left < 0 ? "free" : Time.at(user.pomodorass.last.left).strftime("%M:%S")
-        - else
-          %img.pom{:src => "./assets/pomodoro_small_green.png"}
-          .time_to_end= "free"
-        - if user == current_user then
-          = link_to user.username, pomodoro_adding_path(current_user.id)
-        - else
-          = user.username
+            .time_to_end= "free"
+        .left_div
+          - if !user.pomodorass.empty? then
+            - if user == current_user then
+              - if user.pomodorass.last.status == "free" then
+                = link_to user.username, pomodoro_adding_path(current_user.id)
+              - else
+                = link_to user.username, pomodoro_deleting_path(current_user.id)
+            - else
+              = user.username
+          - else
+            - if user == current_user then
+              = link_to user.username, pomodoro_adding_path(current_user.id)
+            - else
+              = user.username

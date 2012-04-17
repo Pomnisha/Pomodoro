@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :correct_user, :only => [:show, :add_pomodoro]
+  before_filter :correct_user, :only => [:show, :add_pomodoro, :del_pomodoro]
 
   def show
   end
@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     @pom = Pomodoras.new
     @user.pomodorass << @pom
     @pom.status = "busy"
+    redirect_to users_path
+  end
+
+  def del_pomodoro
+    @user.pomodorass.last.destroy unless @user.pomodorass.last.status == "free"
     redirect_to users_path
   end
 
