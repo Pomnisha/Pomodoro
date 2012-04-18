@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :correct_user, :only => [:show, :add_pomodoro, :del_pomodoro]
+  before_filter :authenticate_user!, :only => [:add_pomodoro, :del_pomodoro]
+  before_filter :correct_user, :only => [:add_pomodoro, :del_pomodoro]
 
   def show
   end

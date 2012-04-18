@@ -8,9 +8,16 @@
 %body
   /%img#basket{:src => "./assets/background.png"}
   #nav
-    = link_to "edit profile", edit_user_registration_path
-    |
-    = link_to "sign out", destroy_user_session_path, :method => "delete"
+    - if !current_user.nil? then
+      = link_to "edit profile", edit_user_registration_path
+      |
+      = link_to "main page", users_path
+      |
+      = link_to "sign out", destroy_user_session_path, :method => "delete"
+    - else
+      = link_to "main page", users_path
+      |
+      = link_to "sign in", new_user_session_path
   #content
     = yield
 
