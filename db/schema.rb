@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417194040) do
+ActiveRecord::Schema.define(:version => 20120422200905) do
 
   create_table "pomodoras", :force => true do |t|
     t.integer  "user_id"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "end_at",     :default => '2012-01-01 00:00:01'
   end
 
   create_table "users", :force => true do |t|

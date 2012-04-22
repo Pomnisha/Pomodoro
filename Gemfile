@@ -31,6 +31,9 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
+  gem 'cucumber-rails'
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
 end

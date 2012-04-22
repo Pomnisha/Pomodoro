@@ -10,9 +10,12 @@ class UsersController < ApplicationController
   end
 
   def add_pomodoro
+    @st = params[:status]
+    redirect_to users_path and return unless %("red", "yellow").include?(@st)
     @pom = Pomodoras.new
+    @pom.status = @st
+    @pom.end_at = Time.now + @user.pomodoro_length.minutes
     @user.pomodorass << @pom
-    @pom.status = "busy"
     redirect_to users_path
   end
 

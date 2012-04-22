@@ -4,27 +4,32 @@
       %h3
         .right_div
           - if !user.pomodorass.empty? then
-            -if user.pomodorass.last.status == "busy" then
+            -if user.pomodorass.last.status == "red" then
               %img.pom{:src => "./assets/pomodoro_small_red.png"}
-            - elsif user.pomodorass.last.status == "rest"
+            - elsif user.pomodorass.last.status == "yellow"
               %img.pom{:src => "./assets/pomodoro_small_yellow.png"}
-            - elsif user.pomodorass.last.status == "free"
+            - elsif user.pomodorass.last.status == "green"
               %img.pom{:src => "./assets/pomodoro_small_green.png"}
-            .time_to_end= user.pomodorass.last.left < 0 ? "free" : Time.at(user.pomodorass.last.left).strftime("%M:%S")
+            .time_to_end{:class => "#{(user == current_user) ? 'own' : 'other'}", :style => "font-size: 0.#{user.pomodorass.last.left < 0 ? '8' : '6'}em"}= user.pomodorass.last.left < 0 ? "free" : user.pomodorass.last.left_to_time
           - else
             %img.pom{:src => "./assets/pomodoro_small_green.png"}
-            .time_to_end= "free"
+            .time_to_end{:class => "#{(user == current_user) ? 'own' : 'other'}", :style => "font-size: 0.8em"}= "free"
         .left_div
           - if !user.pomodorass.empty? then
             - if user == current_user then
-              - if user.pomodorass.last.status == "free" then
-                = link_to user.username, pomodoro_adding_path(current_user.id)
+              - if user.pomodorass.last.status == "green" then
+                = user.username
+                = link_to "red", pomodoro_adding_path(current_user.id, "red"), :style => "background-color: #A72A21;"
+                = link_to "yellow", pomodoro_adding_path(current_user.id, "yellow"), :style => "background-color: #909117;"
               - else
-                = link_to user.username, pomodoro_deleting_path(current_user.id)
+                = user.username
+                = link_to "free", pomodoro_deleting_path(current_user.id), :style => "background-color: #598313;"
             - else
               = user.username
           - else
             - if user == current_user then
-              = link_to user.username, pomodoro_adding_path(current_user.id)
+              = user.username
+              = link_to "red", pomodoro_adding_path(current_user.id, "red"), :style => "background-color: #A72A21;"
+              = link_to "yellow", pomodoro_adding_path(current_user.id, "yellow"), :style => "background-color: #909117;"
             - else
               = user.username
